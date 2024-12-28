@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% block title %}Create Product{% endblock %} {% block
+content %}
+
+<h2>Updating an Existing Product</h2>
+<div class="d-flex flex-column justify-content-center align-items-center">
+  <form
+    method="post"
+    action="{{ url_for('category_routes.update', category_id=category_id)}}"
+  >
+    <label for="id" class="form-label">ID:</label>
+    <input
+      type="number"
+      class="form-control"
+      id="id"
+      name="id"
+      value="{{ category.id }}"
+      readonly
+    />
+    <br />
+    <label for="name" class="form-label">Name:</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      name="name"
+      value="{{ category.name }}"
+      required
+    />
+    <br />
+    <label for="price" class="form-label">Price:</label>
+    <textarea
+      name="description"
+      id="description"
+      required
+      class="form-control"
+    >{{category.description}}</textarea>
+    <br />
+    <button type="submit" class="btn btn-success">Update Product</button>
+  </form>
+</div>
+
+{% endblock %}

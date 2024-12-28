@@ -1,0 +1,45 @@
+{%extends "base.html" %} {%block title%}{{title}}{%endblock%} {%block content%}
+<div class="d-flex flex-column justify-content-center row-gap-4">
+
+  <h1>{{title}}</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col"> CategoryID</th>
+        <th scope="col">Category Name</th>
+        <th scope="col">Category Description</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for category in categories %}
+      <tr>
+        <td>{{category.id}}</td>
+        <td>{{category.name}}</td>
+        <td>{{category.description}}</td>
+        <td>
+          <button class="btn btn-warning">
+
+            <a href="{{url_for('category_routes.update', category_id=category.id)}}"
+              >Update</a
+            >
+          </button>
+          <button class="btn btn-danger">
+
+            <a href="{{url_for('category_routes.delete', category_id=category.id)}}"
+              >Delete</a
+            >
+          </button>
+        </td>
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+  <div>
+
+    <button class="btn btn-primary btn-sm w-50" type="button">
+      <a href="{{url_for('category_routes.create')}}">Create a New Category</a>
+    </button>
+  </div>
+</div>
+{%endblock%}
